@@ -31,8 +31,10 @@ body {
   font-family: var(--font-sans);
   color: var(--text-main);
   min-height: 100vh;
-  /* Light blue gradient background */
-  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%) no-repeat center center fixed;
+  /* Background image with a light blue gradient overlay for readability */
+  background:
+    linear-gradient(135deg, rgba(240, 249, 255, 0.55) 0%, rgba(224, 242, 254, 0.5) 50%, rgba(186, 230, 253, 0.55) 100%),
+    url('Bilder/Hintergrund.png') no-repeat center center fixed;
   background-size: cover;
   display: flex;
   justify-content: center;
