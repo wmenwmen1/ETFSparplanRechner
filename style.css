@@ -1,0 +1,293 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for light glassmorphism design system */
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+  
+  --primary-gradient: linear-gradient(135deg, #0284c7, #0369a1);
+  --primary-hover-gradient: linear-gradient(135deg, #0ea5e9, #0284c7);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --input-bg: rgba(255, 255, 255, 0.65);
+  --input-border: rgba(15, 23, 42, 0.12);
+  --input-focus-border: #0284c7;
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  min-height: 100vh;
+  /* Light blue gradient background */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%) no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  line-height: 1.5;
+}
+
+/* Responsive Container */
+.app-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Glassmorphism Box styling */
+.glass-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--glass-shadow);
+  transition: var(--transition-smooth);
+}
+
+.glass-box:hover {
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 40px 0 rgba(15, 23, 42, 0.1);
+}
+
+/* Header Box */
+.header-box {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.header-box h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #0f172a, #0369a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-box p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Main Grid Layout */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 850px) {
+  .calculator-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Box Section Titles */
+.section-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Forms & Inputs styling */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.025em;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--text-main);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+
+/* Space for suffix symbol or select arrow only when needed */
+.input-wrapper:has(.input-suffix) .form-control,
+select.form-control {
+  padding-right: 2.5rem;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+/* Icon / Unit suffix inside input */
+.input-suffix {
+  position: absolute;
+  right: 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Multi-year Inputs Grid */
+.years-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn-calculate {
+  width: 100%;
+  padding: 0.85rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.btn-calculate:hover {
+  background: var(--primary-hover-gradient);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.25);
+}
+
+.btn-calculate:active {
+  transform: translateY(0);
+}
+
+/* Result Table Box and Styles */
+.results-box {
+  margin-top: 1.5rem;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.results-table th {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 2px solid rgba(15, 23, 42, 0.08);
+  letter-spacing: 0.05em;
+}
+
+.results-table td {
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  font-variant-numeric: tabular-nums;
+}
+
+.results-table tbody tr {
+  transition: var(--transition-smooth);
+}
+
+.results-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Target Calculator Specific Output */
+.target-result-card {
+  margin-top: 2rem;
+  background: rgba(2, 132, 199, 0.05);
+  border: 1px solid rgba(2, 132, 199, 0.15);
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-align: center;
+  transition: var(--transition-smooth);
+}
+
+.target-result-card.active {
+  background: rgba(2, 132, 199, 0.1);
+  border-color: rgba(2, 132, 199, 0.3);
+}
+
+.target-result-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #0369a1;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.target-result-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0284c7;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom styling for standard select element to match theme */
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+  padding-right: 2.5rem;
+}
+
+select.form-control option {
+  background-color: #ffffff;
+  color: #0f172a;
+}

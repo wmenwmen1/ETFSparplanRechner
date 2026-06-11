@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETF Sparplan Rechner - Berechnen Sie Ihr Vermögen</title>
+  <meta name="description" content="Berechnen Sie den Zinseszins-Effekt Ihres ETF-Sparplans mit flexiblen Raten in 5-Jahresschritten oder berechnen Sie die nötige Sparrate für Ihr finanzielles Ziel.">
+  <link rel="stylesheet" href="style.css?v=1.3">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Titelbox & Beschreibung -->
+    <header class="glass-box header-box" id="header-box">
+      <h1 id="main-title">ETF Sparplan Rechner</h1>
+      <p id="description-text">
+        Mit ETFs können sie Renditen von 7-8% pro Jahr erreichen. Geben Sie ein, mit welchem Zins sie rechnen und wie viel Sie pro Monat sparen wollen. Sie können den Sparbetrag in 5 Jahresschritten anpassen. Der Rechner berechnet, auf welchen Betrag Ihr Vermögen anwachsen wird.
+      </p>
+    </header>
+
+    <!-- Main Content Area: Two columns -->
+    <main class="calculator-grid">
+      
+      <!-- Left Box: Savings Accumulation Calculator -->
+      <section class="glass-box" id="savings-calculator-section">
+        <h2 class="section-title" id="savings-title">Sparplan konfigurieren</h2>
+        
+        <form id="savings-form">
+          <div class="form-group">
+            <label for="zins">Zins / jährliche Rendite in %</label>
+            <div class="input-wrapper">
+              <input type="number" id="zins" class="form-control" placeholder="z.B. 7.5" step="0.1" min="0" max="100" required>
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+          
+          <div class="years-grid">
+            <div class="form-group">
+              <label for="sparbetrag-1-5">Jahr 1-5 (monatlich)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-1-5" class="form-control" placeholder="z.B. 150" min="0" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="sparbetrag-6-10">Jahr 6-10 (monatlich)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-6-10" class="form-control" placeholder="z.B. 200" min="0" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="sparbetrag-11-15">Jahr 11-15 (monatlich)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-11-15" class="form-control" placeholder="z.B. 250" min="0" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="sparbetrag-16-20">Jahr 16-20 (monatlich)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-16-20" class="form-control" placeholder="z.B. 300" min="0" required>
+              </div>
+            </div>
+          </div>
+          
+          <button type="submit" id="btn-berechne-sparplan" class="btn-calculate">Berechne</button>
+        </form>
+        
+        <!-- Results Table -->
+        <div class="results-box" id="results-table-box">
+          <h3 class="section-title" id="results-table-title">Vermögen nach</h3>
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>Zeitraum</th>
+                <th>Eingezahlt</th>
+                <th>Zins</th>
+                <th>Vermögen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5 Jahren</td>
+                <td id="eingezahlt-5">-</td>
+                <td id="zins-5">-</td>
+                <td id="vermoegen-5">-</td>
+              </tr>
+              <tr>
+                <td>10 Jahren</td>
+                <td id="eingezahlt-10">-</td>
+                <td id="zins-10">-</td>
+                <td id="vermoegen-10">-</td>
+              </tr>
+              <tr>
+                <td>15 Jahren</td>
+                <td id="eingezahlt-15">-</td>
+                <td id="zins-15">-</td>
+                <td id="vermoegen-15">-</td>
+              </tr>
+              <tr>
+                <td>20 Jahren</td>
+                <td id="eingezahlt-20">-</td>
+                <td id="zins-20">-</td>
+                <td id="vermoegen-20">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Right Box: Target Goal Savings Calculator -->
+      <section class="glass-box" id="target-calculator-section">
+        <h2 class="section-title" id="target-title">Wie viel muss ich sparen, um ein Ziel zu erreichen</h2>
+        
+        <form id="target-form">
+          <div class="form-group">
+            <label for="ziel-dauer">Dauer</label>
+            <select id="ziel-dauer" class="form-control" required>
+              <option value="" disabled selected>Dauer wählen...</option>
+              <option value="5">5 Jahre</option>
+              <option value="10">10 Jahre</option>
+              <option value="15">15 Jahre</option>
+              <option value="20">20 Jahre</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="zielvermoegen">Zielvermögen</label>
+            <div class="input-wrapper">
+              <input type="number" id="zielvermoegen" class="form-control" placeholder="z.B. 50000" min="0" required>
+            </div>
+          </div>
+          
+          <button type="submit" id="btn-berechne-ziel" class="btn-calculate">Berechnen</button>
+        </form>
+        
+        <!-- Result Display Card -->
+        <div class="target-result-card" id="target-result-card">
+          <div class="target-result-label">Monatlicher Sparbetrag</div>
+          <div class="target-result-value" id="ziel-sparbetrag-result">-</div>
+        </div>
+      </section>
+      
+    </main>
+
+  </div>
+
+</body>
+</html>
