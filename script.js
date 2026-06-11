@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // DOM Elements - Target Goal Savings Calculator
   const targetForm = document.getElementById('target-form');
+  const zielZinsInput = document.getElementById('ziel-zins');
   const zielDauerSelect = document.getElementById('ziel-dauer');
   const zielvermoegenInput = document.getElementById('zielvermoegen');
   const zielSparbetragResult = document.getElementById('ziel-sparbetrag-result');
@@ -111,27 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
     vermoegen20.textContent = formatCurrency(results[20].wealth);
   });
 
-  // Language-aware messages (detected from <html lang="..">)
-  const pageLang = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase();
-  const i18n = {
-    de: 'Bitte geben Sie zuerst im linken Bereich den "Zins / jährliche Rendite in %" ein, da dieser Zinswert als Berechnungsgrundlage verwendet wird.',
-    en: 'Please first enter the "Interest rate / annual return in %" in the left section, as this value is used as the basis for the calculation.',
-    fr: "Veuillez d'abord saisir le « Taux d'intérêt / rendement annuel en % » dans la section de gauche, car cette valeur sert de base au calcul."
-  };
-
   // Target Goal Form Submit Handler
   targetForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    // Check if interest rate is entered in the savings form
-    if (!zinsInput.value || zinsInput.value === '') {
-      alert(i18n[pageLang] || i18n.de);
-      zinsInput.focus();
-      return;
-    }
-
-    // Read values
-    const zins = parseFloat(zinsInput.value);
+    // Read values from the target form (its own interest rate field)
+    const zins = parseFloat(zielZinsInput.value);
     const dauerYears = parseInt(zielDauerSelect.value, 10);
     const zielvermoegen = parseFloat(zielvermoegenInput.value);
 
