@@ -111,13 +111,21 @@ document.addEventListener('DOMContentLoaded', () => {
     vermoegen20.textContent = formatCurrency(results[20].wealth);
   });
 
+  // Language-aware messages (detected from <html lang="..">)
+  const pageLang = (document.documentElement.lang || 'de').slice(0, 2).toLowerCase();
+  const i18n = {
+    de: 'Bitte geben Sie zuerst im linken Bereich den "Zins / jährliche Rendite in %" ein, da dieser Zinswert als Berechnungsgrundlage verwendet wird.',
+    en: 'Please first enter the "Interest rate / annual return in %" in the left section, as this value is used as the basis for the calculation.',
+    fr: "Veuillez d'abord saisir le « Taux d'intérêt / rendement annuel en % » dans la section de gauche, car cette valeur sert de base au calcul."
+  };
+
   // Target Goal Form Submit Handler
   targetForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Check if interest rate is entered in the savings form
     if (!zinsInput.value || zinsInput.value === '') {
-      alert('Bitte geben Sie zuerst im linken Bereich den "Zins / jährliche Rendite in %" ein, da dieser Zinswert als Berechnungsgrundlage verwendet wird.');
+      alert(i18n[pageLang] || i18n.de);
       zinsInput.focus();
       return;
     }

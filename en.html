@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ETF Savings Plan Calculator - Calculate Your Wealth</title>
+  <meta name="description" content="Calculate the compound interest effect of your ETF savings plan with flexible rates in 5-year steps, or calculate the savings rate needed to reach your financial goal.">
+  <link rel="stylesheet" href="style.css?v=1.5">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Language Switcher -->
+    <nav class="lang-switcher" aria-label="Choose language">
+      <a href="index.html" class="lang-link" lang="de" hreflang="de">DE</a>
+      <a href="en.html" class="lang-link active" lang="en" hreflang="en" aria-current="page">EN</a>
+      <a href="fr.html" class="lang-link" lang="fr" hreflang="fr">FR</a>
+    </nav>
+
+    <!-- Title Box & Description -->
+    <header class="glass-box header-box" id="header-box">
+      <h1 id="main-title">ETF Savings Plan Calculator</h1>
+      <p id="description-text">
+        With ETFs you can achieve returns of 7-8% per year. Enter the interest rate you expect and how much you want to save per month. You can adjust the savings amount in 5-year steps. The calculator shows how much your wealth will grow.
+      </p>
+    </header>
+
+    <!-- Main Content Area: Two columns -->
+    <main class="calculator-grid">
+
+      <!-- Left Box: Savings Accumulation Calculator -->
+      <section class="glass-box" id="savings-calculator-section">
+        <h2 class="section-title" id="savings-title">Configure Savings Plan</h2>
+
+        <form id="savings-form">
+          <div class="form-group">
+            <label for="zins">Interest rate / annual return in %</label>
+            <div class="input-wrapper">
+              <input type="number" id="zins" class="form-control" placeholder="e.g. 7.5" step="0.1" min="0" max="100" required>
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+
+          <div class="years-grid">
+            <div class="form-group">
+              <label for="sparbetrag-1-5">Year 1-5 (monthly)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-1-5" class="form-control" placeholder="e.g. 150" min="0" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sparbetrag-6-10">Year 6-10 (monthly)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-6-10" class="form-control" placeholder="e.g. 200" min="0" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sparbetrag-11-15">Year 11-15 (monthly)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-11-15" class="form-control" placeholder="e.g. 250" min="0" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sparbetrag-16-20">Year 16-20 (monthly)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-16-20" class="form-control" placeholder="e.g. 300" min="0" required>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-berechne-sparplan" class="btn-calculate">Calculate</button>
+        </form>
+
+        <!-- Results Table -->
+        <div class="results-box" id="results-table-box">
+          <h3 class="section-title" id="results-table-title">Wealth After</h3>
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>Period</th>
+                <th>Deposited</th>
+                <th>Interest</th>
+                <th>Wealth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5 Years</td>
+                <td id="eingezahlt-5">-</td>
+                <td id="zins-5">-</td>
+                <td id="vermoegen-5">-</td>
+              </tr>
+              <tr>
+                <td>10 Years</td>
+                <td id="eingezahlt-10">-</td>
+                <td id="zins-10">-</td>
+                <td id="vermoegen-10">-</td>
+              </tr>
+              <tr>
+                <td>15 Years</td>
+                <td id="eingezahlt-15">-</td>
+                <td id="zins-15">-</td>
+                <td id="vermoegen-15">-</td>
+              </tr>
+              <tr>
+                <td>20 Years</td>
+                <td id="eingezahlt-20">-</td>
+                <td id="zins-20">-</td>
+                <td id="vermoegen-20">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Right Box: Target Goal Savings Calculator -->
+      <section class="glass-box" id="target-calculator-section">
+        <h2 class="section-title" id="target-title">How much do I need to save to reach a goal</h2>
+
+        <form id="target-form">
+          <div class="form-group">
+            <label for="ziel-dauer">Duration</label>
+            <select id="ziel-dauer" class="form-control" required>
+              <option value="" disabled selected>Select duration...</option>
+              <option value="5">5 years</option>
+              <option value="10">10 years</option>
+              <option value="15">15 years</option>
+              <option value="20">20 years</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="zielvermoegen">Target wealth</label>
+            <div class="input-wrapper">
+              <input type="number" id="zielvermoegen" class="form-control" placeholder="e.g. 50000" min="0" required>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-berechne-ziel" class="btn-calculate">Calculate</button>
+        </form>
+
+        <!-- Result Display Card -->
+        <div class="target-result-card" id="target-result-card">
+          <div class="target-result-label">Monthly savings amount</div>
+          <div class="target-result-value" id="ziel-sparbetrag-result">-</div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

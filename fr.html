@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur de Plan d'Épargne ETF - Calculez Votre Patrimoine</title>
+  <meta name="description" content="Calculez l'effet des intérêts composés de votre plan d'épargne ETF avec des taux flexibles par étapes de 5 ans, ou calculez le montant d'épargne nécessaire pour atteindre votre objectif financier.">
+  <link rel="stylesheet" href="style.css?v=1.5">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- Sélecteur de langue -->
+    <nav class="lang-switcher" aria-label="Choisir la langue">
+      <a href="index.html" class="lang-link" lang="de" hreflang="de">DE</a>
+      <a href="en.html" class="lang-link" lang="en" hreflang="en">EN</a>
+      <a href="fr.html" class="lang-link active" lang="fr" hreflang="fr" aria-current="page">FR</a>
+    </nav>
+
+    <!-- Titre & Description -->
+    <header class="glass-box header-box" id="header-box">
+      <h1 id="main-title">Calculateur de Plan d'Épargne ETF</h1>
+      <p id="description-text">
+        Avec les ETF, vous pouvez obtenir des rendements de 7 à 8 % par an. Indiquez le taux d'intérêt que vous prévoyez et le montant que vous souhaitez épargner chaque mois. Vous pouvez ajuster le montant de l'épargne par étapes de 5 ans. Le calculateur détermine la valeur à laquelle votre patrimoine grandira.
+      </p>
+    </header>
+
+    <!-- Contenu principal : deux colonnes -->
+    <main class="calculator-grid">
+
+      <!-- Colonne gauche : calculateur d'accumulation -->
+      <section class="glass-box" id="savings-calculator-section">
+        <h2 class="section-title" id="savings-title">Configurer le plan d'épargne</h2>
+
+        <form id="savings-form">
+          <div class="form-group">
+            <label for="zins">Taux d'intérêt / rendement annuel en %</label>
+            <div class="input-wrapper">
+              <input type="number" id="zins" class="form-control" placeholder="ex. 7.5" step="0.1" min="0" max="100" required>
+              <span class="input-suffix">%</span>
+            </div>
+          </div>
+
+          <div class="years-grid">
+            <div class="form-group">
+              <label for="sparbetrag-1-5">Année 1-5 (mensuel)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-1-5" class="form-control" placeholder="ex. 150" min="0" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sparbetrag-6-10">Année 6-10 (mensuel)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-6-10" class="form-control" placeholder="ex. 200" min="0" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sparbetrag-11-15">Année 11-15 (mensuel)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-11-15" class="form-control" placeholder="ex. 250" min="0" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="sparbetrag-16-20">Année 16-20 (mensuel)</label>
+              <div class="input-wrapper">
+                <input type="number" id="sparbetrag-16-20" class="form-control" placeholder="ex. 300" min="0" required>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-berechne-sparplan" class="btn-calculate">Calculer</button>
+        </form>
+
+        <!-- Tableau des résultats -->
+        <div class="results-box" id="results-table-box">
+          <h3 class="section-title" id="results-table-title">Patrimoine après</h3>
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th>Période</th>
+                <th>Versé</th>
+                <th>Intérêts</th>
+                <th>Patrimoine</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5 ans</td>
+                <td id="eingezahlt-5">-</td>
+                <td id="zins-5">-</td>
+                <td id="vermoegen-5">-</td>
+              </tr>
+              <tr>
+                <td>10 ans</td>
+                <td id="eingezahlt-10">-</td>
+                <td id="zins-10">-</td>
+                <td id="vermoegen-10">-</td>
+              </tr>
+              <tr>
+                <td>15 ans</td>
+                <td id="eingezahlt-15">-</td>
+                <td id="zins-15">-</td>
+                <td id="vermoegen-15">-</td>
+              </tr>
+              <tr>
+                <td>20 ans</td>
+                <td id="eingezahlt-20">-</td>
+                <td id="zins-20">-</td>
+                <td id="vermoegen-20">-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Colonne droite : calculateur d'objectif -->
+      <section class="glass-box" id="target-calculator-section">
+        <h2 class="section-title" id="target-title">Combien dois-je épargner pour atteindre un objectif</h2>
+
+        <form id="target-form">
+          <div class="form-group">
+            <label for="ziel-dauer">Durée</label>
+            <select id="ziel-dauer" class="form-control" required>
+              <option value="" disabled selected>Choisir la durée...</option>
+              <option value="5">5 ans</option>
+              <option value="10">10 ans</option>
+              <option value="15">15 ans</option>
+              <option value="20">20 ans</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="zielvermoegen">Patrimoine cible</label>
+            <div class="input-wrapper">
+              <input type="number" id="zielvermoegen" class="form-control" placeholder="ex. 50000" min="0" required>
+            </div>
+          </div>
+
+          <button type="submit" id="btn-berechne-ziel" class="btn-calculate">Calculer</button>
+        </form>
+
+        <!-- Carte de résultat -->
+        <div class="target-result-card" id="target-result-card">
+          <div class="target-result-label">Montant mensuel d'épargne</div>
+          <div class="target-result-value" id="ziel-sparbetrag-result">-</div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

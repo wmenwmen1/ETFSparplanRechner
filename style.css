@@ -52,6 +52,43 @@ body {
   gap: 1.5rem;
 }
 
+/* Language Switcher */
+.lang-switcher {
+  align-self: flex-end;
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.35rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  box-shadow: var(--glass-shadow);
+}
+
+.lang-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  transition: var(--transition-smooth);
+  line-height: 1;
+}
+
+.lang-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.lang-link.active {
+  color: #ffffff;
+  background: var(--primary-gradient);
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+}
+
 /* Glassmorphism Box styling */
 .glass-box {
   background: var(--glass-bg);
