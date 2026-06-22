@@ -1,0 +1,24 @@
+on the main page add a block at the bottom for an add for my book. I have added the thnumbnail pictures are in Bilder
+
+on German page:
+- on left thumbnail picture: Bilder/Kindle-Cover-Front-Thumb-De.jpg
+- right of picture the Text: 
+"<strong>Anlage Ratgeber<\strong>: Vermögensaufbau ohne Stress! Erfahren Sie vom Ex-Bank-CIO, wie Sie mit ETFs klug anlegen."
+- add a button "zum Buch" with the WEB-Link:
+"http://www.amazon.de/exec/obidos/ASIN/3033122248/buchempfehlumark"
+
+on English page: 
+- on left thumbnail picture: Bilder/Kindle-Cover-Front-Thumb-En.jpg
+- right of picture the Text: 
+"<strong>Investor Guide<\strong>: Build wealth without stress! Learn from a former bank CIO how to invest wisely with ETFs."
+- add a button "to the book" with the WEB-Link:
+"http://www.amazon.de/exec/obidos/ASIN/3033122930/buchempfehlumark"
+
+on Fench page:
+- on left thumbnail picture: Bilder/Kindle-Cover-Front-Thumb-En.jpg
+- right of picture the Text: 
+"<strong>Investir en toute confiance<\strong>: Construisez votre patrimoine sans stress ! Découvrez, grâce à un ancien CIO de banque, comment investir intelligemment avec des ETF."
+- add a button "zum Buch" with the WEB-Link:
+"http://www.amazon.de/exec/obidos/ASIN/3033122930/buchempfehlumark"
+
+

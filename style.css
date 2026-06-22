@@ -330,3 +330,68 @@ select.form-control option {
   background-color: #ffffff;
   color: #0f172a;
 }
+
+/* Book Advertisement Block */
+.book-ad {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.book-ad-cover {
+  flex-shrink: 0;
+  width: 110px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+}
+
+.book-ad-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.book-ad-text {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.book-ad-text strong {
+  color: var(--text-main);
+}
+
+.book-ad-btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--primary-gradient);
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+}
+
+.book-ad-btn:hover {
+  background: var(--primary-hover-gradient);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.25);
+}
+
+@media (max-width: 560px) {
+  .book-ad {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .book-ad-content {
+    align-items: center;
+  }
+}
